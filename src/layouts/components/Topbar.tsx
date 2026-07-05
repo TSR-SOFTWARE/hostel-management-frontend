@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, IconButton, Typography, Box, Tooltip } from '@mui/material';
+import { AppBar, Toolbar, IconButton,Typography,Box, Tooltip } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -22,12 +22,9 @@ export const Topbar = () => {
         borderBottom: '1px solid',
         borderColor: 'divider',
         color: 'text.primary',
-        ml: { md: `${drawerWidth}px` },
-        width: { md: `calc(100% - ${drawerWidth}px)` },
-        transition: 'width 200ms, margin 200ms',
       }}
     >
-      <Toolbar>
+      <Toolbar sx={{ pl: { md: `${drawerWidth + 8}px` }, transition: 'padding 200ms' }}>
         <IconButton onClick={toggleCollapse} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
           {isCollapsed ? <MenuIcon /> : <MenuOpenIcon />}
         </IconButton>
