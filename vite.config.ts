@@ -17,13 +17,11 @@ export default defineConfig({
       '@components': path.resolve(__dirname, 'src/components'),
       '@guards': path.resolve(__dirname, 'src/guards'),
       '@theme': path.resolve(__dirname, 'src/theme'),
-      '@types': path.resolve(__dirname, 'src/types'),
+      '@appTypes': path.resolve(__dirname, 'src/types'),
       '@constants': path.resolve(__dirname, 'src/constants'),
       '@utils': path.resolve(__dirname, 'src/utils'),
       '@config': path.resolve(__dirname, 'src/config'),
     },
   },
-  server: {
-    port: 3000,
-  },
+  server: { port: 3000 },
 });

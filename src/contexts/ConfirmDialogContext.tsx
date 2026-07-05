@@ -20,6 +20,7 @@ interface ConfirmOptions {
   message: string;
   confirmLabel?: string;
   cancelLabel?: string;
+  confirmColor?: 'error' | 'primary' | 'warning';
 }
 
 interface ConfirmDialogContextType {
@@ -60,7 +61,7 @@ export const ConfirmDialogContextProvider = ({ children }: { children: ReactNode
         </DialogContent>
         <DialogActions>
           <Button onClick={() => handleClose(false)}>{options.cancelLabel ?? 'Cancel'}</Button>
-          <Button onClick={() => handleClose(true)} color="error" variant="contained">
+          <Button onClick={() => handleClose(true)} color={options.confirmColor ?? 'primary'} variant="contained">
             {options.confirmLabel ?? 'Confirm'}
           </Button>
         </DialogActions>

@@ -28,7 +28,7 @@
       "@components/*": ["src/components/*"],
       "@guards/*": ["src/guards/*"],
       "@theme/*": ["src/theme/*"],
-      "@types/*": ["src/types/*"],
+      "@appTypes/*": ["src/types/*"],
       "@constants/*": ["src/constants/*"],
       "@utils/*": ["src/utils/*"],
       "@config/*": ["src/config/*"]

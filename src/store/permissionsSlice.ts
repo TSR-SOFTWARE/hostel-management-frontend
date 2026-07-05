@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { PermissionType } from '@types/common.types';
+import type { PermissionType } from '@appTypes/common.types';
 
 interface PermissionsState {
   permissions: PermissionType[];

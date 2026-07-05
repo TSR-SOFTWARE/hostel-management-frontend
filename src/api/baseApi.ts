@@ -1,4 +1,10 @@
-īimport { createApi, fetchBaseQuery, type BaseQueryFn, type FetchArgs, type FetchBaseQueryError } from '@reduxjs/toolkit/query/react';
+import {
+  createApi,
+  fetchBaseQuery,
+  type BaseQueryFn,
+  type FetchArgs,
+  type FetchBaseQueryError,
+} from '@reduxjs/toolkit/query/react';
 import { env } from '@config/env';
 import type { RootState } from '@app/store';
 import { setCredentials, clearCredentials } from '@store/authSlice';
@@ -6,6 +12,7 @@ import { clearUser } from '@store/userSlice';
 import { clearRoles } from '@store/rolesSlice';
 import { clearPermissions } from '@store/permissionsSlice';
 import { API_PATHS } from '@constants/api.constants';
+import type { TokenResponseType } from '@appTypes/auth.types';
 
 const rawBaseQuery = fetchBaseQuery({
   baseUrl: env.API_BASE_URL,
@@ -16,11 +23,11 @@ const rawBaseQuery = fetchBaseQuery({
   },
 });
 
-const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError> = async (
-  args,
-  api,
-  extraOptions
-) => {
+const baseQueryWithReauth: BaseQueryFn<
+  string | FetchArgs,
+  unknown,
+  FetchBaseQueryError
+> = async (args, api, extraOptions) => {
   let result = await rawBaseQuery(args, api, extraOptions);
 
   if (result.error?.status === 401) {
@@ -34,7 +41,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
       );
 
       if (refreshResult.data) {
-        api.dispatch(setCredentials(refreshResult.data as { access_token: string; refresh_token: string; token_type: string }));
+        api.dispatch(setCredentials(refreshResult.data as TokenResponseType));
         result = await rawBaseQuery(args, api, extraOptions);
       } else {
         api.dispatch(clearCredentials());
@@ -56,6 +63,6 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
 export const baseApi = createApi({
   reducerPath: 'api',
   baseQuery: baseQueryWithReauth,
-  tagTypes: ['User', 'Roles', 'Permissions', 'Me'],
+  tagTypes: ['User', 'Roles', 'Permissions', 'Me', 'Hostel'],
   endpoints: () => ({}),
 });

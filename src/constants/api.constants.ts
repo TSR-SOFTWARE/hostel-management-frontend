@@ -16,4 +16,13 @@ export const API_PATHS = {
   // Roles & Permissions
   ROLES: '/api/roles',
   PERMISSIONS: '/api/permissions',
+
+  // Admin — Roles
+  ADMIN_ROLES: '/api/admin/roles',
+  ADMIN_ROLE_BY_ID: (id: string) => `/api/admin/roles/${id}`,
+  ADMIN_ROLE_PERMISSIONS: (id: string) => `/api/admin/roles/${id}/permissions`,
+
+  // Admin — Hostels
+  ADMIN_HOSTELS: '/api/admin/hostels',
+  ADMIN_HOSTEL_BY_ID: (id: string) => `/api/admin/hostels/${id}`,
 } as const;

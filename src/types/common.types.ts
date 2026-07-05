@@ -45,3 +45,19 @@ export interface UserProfileType {
   last_login: string | null;
   created_at: string | null;
 }
+
+export interface HostelType {
+  id: string;
+  owner_id: string;
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  pincode: string;
+  phone: string | null;
+  email: string | null;
+  total_rooms: number;
+  is_active: boolean;
+  created_at: string | null;
+  updated_at: string | null;
+}

@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import type { AuthStateType, TokenResponseType } from '@types/auth.types';
+import type { AuthStateType, TokenResponseType } from '@appTypes/auth.types';
 
 const initialState: AuthStateType = {
   accessToken: null,
@@ -16,13 +16,13 @@ const authSlice = createSlice({
       state.accessToken = action.payload.access_token;
       state.refreshToken = action.payload.refresh_token;
       state.isAuthenticated = true;
-      state.isInitialized = true;
+      state.isInitialized = false; // AppInitializer will set true after fetching /me
     },
     clearCredentials(state) {
       state.accessToken = null;
       state.refreshToken = null;
       state.isAuthenticated = false;
-      state.isInitialized = true;
+      state.isInitialized = false;
     },
     setInitialized(state) {
       state.isInitialized = true;
