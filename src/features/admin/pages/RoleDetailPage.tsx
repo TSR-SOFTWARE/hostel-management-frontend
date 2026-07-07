@@ -58,7 +58,13 @@ export default function RoleDetailPage() {
     const allChecked = ids.every((id) => selected.has(id));
     setSelected((prev) => {
       const next = new Set(prev);
-      ids.forEach((id) => allChecked ? next.delete(id) : next.add(id));
+      ids.forEach((id) => {
+       if (allChecked) {
+        next.delete(id);
+        } else {
+         next.add(id);
+        }
+      });
       return next;
     });
     setIsDirty(true);
