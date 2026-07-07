@@ -65,6 +65,7 @@ export default function RoleDetailPage() {
          next.add(id);
         }
       });
+      return next;
     });
     setIsDirty(true);
   };
